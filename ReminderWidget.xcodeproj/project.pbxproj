@@ -10,8 +10,6 @@
 		E63FE3652DE5284500710E5A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E63FE3642DE5284500710E5A /* WidgetKit.framework */; };
 		E63FE3672DE5284500710E5A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E63FE3662DE5284500710E5A /* SwiftUI.framework */; };
 		E63FE3752DE5284700710E5A /* ReminderWidgetExtensionExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E63FE3622DE5284500710E5A /* ReminderWidgetExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E63FE3A62DE54F3900710E5A /* ReminderSelectionIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63FE3A52DE54F3900710E5A /* ReminderSelectionIntent.swift */; };
-		E63FE3A72DE54F3900710E5A /* ReminderSelectionIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63FE3A52DE54F3900710E5A /* ReminderSelectionIntent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +57,6 @@
 		E63FE3622DE5284500710E5A /* ReminderWidgetExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ReminderWidgetExtensionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E63FE3642DE5284500710E5A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = /System/Library/Frameworks/WidgetKit.framework; sourceTree = "<absolute>"; };
 		E63FE3662DE5284500710E5A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = /System/Library/Frameworks/SwiftUI.framework; sourceTree = "<absolute>"; };
-		E63FE3A52DE54F3900710E5A /* ReminderSelectionIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSelectionIntent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -67,16 +64,8 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
-				Intent.swift,
 			);
 			target = E63FE3612DE5284500710E5A /* ReminderWidgetExtensionExtension */;
-		};
-		E63FE37E2DE528AC00710E5A /* Exceptions for "ReminderWidgetExtension" folder in "ReminderWidget" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Intent.swift,
-			);
-			target = E63FE3302DE527D800710E5A /* ReminderWidget */;
 		};
 		E63FE3872DE52F4F00710E5A /* Exceptions for "ReminderWidget" folder in "ReminderWidget" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -118,7 +107,6 @@
 		E63FE3682DE5284500710E5A /* ReminderWidgetExtension */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				E63FE37E2DE528AC00710E5A /* Exceptions for "ReminderWidgetExtension" folder in "ReminderWidget" target */,
 				E63FE3762DE5284700710E5A /* Exceptions for "ReminderWidgetExtension" folder in "ReminderWidgetExtensionExtension" target */,
 			);
 			path = ReminderWidgetExtension;
@@ -163,7 +151,6 @@
 		E63FE3282DE527D800710E5A = {
 			isa = PBXGroup;
 			children = (
-				E63FE3A52DE54F3900710E5A /* ReminderSelectionIntent.swift */,
 				E63FE3332DE527D800710E5A /* ReminderWidget */,
 				E63FE3442DE527DA00710E5A /* ReminderWidgetTests */,
 				E63FE34E2DE527DA00710E5A /* ReminderWidgetUITests */,
@@ -372,7 +359,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E63FE3A62DE54F3900710E5A /* ReminderSelectionIntent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,7 +380,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E63FE3A72DE54F3900710E5A /* ReminderSelectionIntent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

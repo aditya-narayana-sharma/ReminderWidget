@@ -24,8 +24,8 @@ struct ReminderFetcher {
             
             let allCalendars = store.calendars(for: .reminder)
             let selectedCalendars: [EKCalendar]? = {
-                guard let name = listName, !name.isEmpty else { return nil }
-                return allCalendars.filter { $0.title == name }
+                guard let identifier = listName, !identifier.isEmpty else { return nil }
+                return allCalendars.filter { $0.calendarIdentifier == identifier }
             }()
             
             let predicate = store.predicateForIncompleteReminders(

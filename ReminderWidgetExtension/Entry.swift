@@ -27,6 +27,9 @@ struct ReminderEntry: TimelineEntry {
 
     /// Determines whether to show the URL preview.
     let showURL: Bool
+
+    /// Controls whether list summaries should be shown in the widget.
+    let showListSummary: Bool
 }
 
 // Example placeholder for preview purposes.
@@ -38,7 +41,8 @@ extension ReminderEntry {
             dueTime: Calendar.current.date(byAdding: .hour, value: 1, to: Date()),
             selectedList: "Default",
             tags: ["#work", "#urgent"],
-            showURL: true
+            showURL: true,
+            showListSummary: true
         )
     }
 }
