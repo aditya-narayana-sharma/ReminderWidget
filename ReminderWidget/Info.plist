@@ -2,9 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSRemindersUsageDescription</key>
+	<string>This app needs access to your Reminders to display upcoming tasks.</string>
 	<key>CFBundleIdentifier</key>
 	<string></string>
-	<key>NSRemindersUsageDescription</key>
-	<string>This app needs access to your reminders.</string>
 </dict>
 </plist>

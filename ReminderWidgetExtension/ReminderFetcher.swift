@@ -5,7 +5,6 @@
 //  Created by Aditya Sharma on 27.05.25.
 //
 
-
 import Foundation
 import EventKit
 
@@ -25,7 +24,7 @@ struct ReminderFetcher {
             let allCalendars = store.calendars(for: .reminder)
             let selectedCalendars: [EKCalendar]? = {
                 guard let identifier = listName, !identifier.isEmpty else { return nil }
-                return allCalendars.filter { $0.calendarIdentifier == identifier }
+                return allCalendars.filter { $0.title == identifier }
             }()
             
             let predicate = store.predicateForIncompleteReminders(
@@ -55,19 +54,24 @@ struct ReminderFetcher {
                 }
 
                 // fallback: get first reminder from the default list
-                let fallback: (String, Date)? = reminders?
-                    .compactMap { reminder in
-                        guard let title = reminder.title,
-                              let dueComponents = reminder.dueDateComponents,
-                              let dueDate = Calendar.current.date(from: dueComponents) else {
-                            return nil
+                if let reminders = reminders {
+                    print("No matching reminders found in 3-hour window, falling back to earliest reminder.")
+                    let fallback: (String, Date)? = reminders
+                        .compactMap { reminder in
+                            guard let title = reminder.title,
+                                  let dueComponents = reminder.dueDateComponents,
+                                  let dueDate = Calendar.current.date(from: dueComponents) else {
+                                return nil
+                            }
+                            return (title, dueDate)
                         }
-                        return (title, dueDate)
-                    }
-                    .sorted { $0.1 < $1.1 }
-                    .first
+                        .sorted { $0.1 < $1.1 }
+                        .first
 
-                completion(fallback?.0, fallback?.1)
+                    completion(fallback?.0, fallback?.1)
+                } else {
+                    completion(nil, nil)
+                }
             }
         })
     }

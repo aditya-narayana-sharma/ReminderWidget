@@ -16,22 +16,24 @@ struct ReminderWidgetView: View {
     @State private var listSummaries: [String] = []
 
     var body: some View {
-        ZStack {
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Next Reminder")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-
-                if let list = entry.selectedList {
-                    Text("List: \(list)")
-                }
-                if entry.showListSummary && !listSummaries.isEmpty {
-                    Text("Lists: \(listSummaries.joined(separator: ", "))")
-                        .font(.caption2)
+        Link(destination: URL(string: "x-apple-reminderkit://")!) {
+            ZStack {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Next Reminder")
+                        .font(.caption)
                         .foregroundStyle(.secondary)
+
+                    Text("List: \(entry.selectedList ?? "None")")
+                        .accessibilityLabel("Reminder List: \(entry.selectedList ?? "None")")
+                    if entry.showListSummary && !listSummaries.isEmpty {
+                        Text("Lists: \(listSummaries.joined(separator: ", "))")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                    }
                 }
+                .accessibilityElement(children: .combine)
             }
+            .containerBackground(.fill, for: .widget)
         }
-        .containerBackground(.fill, for: .widget)
     }
 }

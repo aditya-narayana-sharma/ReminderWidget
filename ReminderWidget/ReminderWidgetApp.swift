@@ -9,6 +9,13 @@ import SwiftUI
 import SwiftData
 import EventKit
 
+private let eventStore = EKEventStore()
+
+// This SwiftUI App handles:
+// - WidgetKit + SwiftData integration
+// - EventKit access to Reminders
+// - Full permission request handling for iOS 17+/macOS 14+
+
 @main
 struct ReminderWidgetApp: App {
     var sharedModelContainer: ModelContainer = {
@@ -35,11 +42,10 @@ struct ReminderWidgetApp: App {
     }
 }
 
+// MARK: - Reminder Permission Request
 func requestReminderPermission() {
-    let store = EKEventStore()
-
     if #available(macOS 14.0, iOS 17.0, *) {
-        store.requestFullAccessToReminders { granted, error in
+        eventStore.requestFullAccessToReminders { granted, error in
             if granted {
                 print("✅ Full access to Reminders granted.")
             } else {
@@ -47,7 +53,7 @@ func requestReminderPermission() {
             }
         }
     } else {
-        store.requestAccess(to: .reminder) { granted, error in
+        eventStore.requestAccess(to: .reminder) { granted, error in
             if granted {
                 print("✅ Reminder access granted (legacy).")
             } else {

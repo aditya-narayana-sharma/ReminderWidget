@@ -25,7 +25,7 @@ struct ReminderTimelineProvider: AppIntentTimelineProvider {
 
     func timeline(for configuration: ReminderSelectionIntent, in context: Context) async -> Timeline<ReminderEntry> {
         let currentDate = Date()
-        let selectedList = configuration.reminderList?.value
+        let selectedList = configuration.reminderList?.title
 
         let (title, dueDate) = await ReminderFetcher.fetchNextReminderAsync(fromList: selectedList)
         let reminderTitle = title ?? "No upcoming reminders"
