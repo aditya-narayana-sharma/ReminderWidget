@@ -10,16 +10,24 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @Query private var reminders: [ReminderItem]
 
     var body: some View {
         NavigationSplitView {
             List {
-                ForEach(items) { item in
+                ForEach(reminders) { reminder in
                     NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
+                        VStack(alignment: .leading) {
+                            Text(reminder.title)
+                                .font(.title2)
+                            if let due = reminder.dueDate {
+                                Text("Due: \(due.formatted(date: .numeric, time: .shortened))")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
                     } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+                        Text(reminder.title)
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -46,15 +54,21 @@ struct ContentView: View {
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
+            let newReminder = ReminderItem(
+                timestamp: Date(),
+                title: "New Reminder",
+                dueDate: Calendar.current.date(byAdding: .hour, value: 1, to: Date()),
+                listName: "General",
+                tags: ["#inbox"]
+            )
+            modelContext.insert(newReminder)
         }
     }
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             for index in offsets {
-                modelContext.delete(items[index])
+                modelContext.delete(reminders[index])
             }
         }
     }
@@ -62,5 +76,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+        .modelContainer(for: ReminderItem.self, inMemory: true)
 }
