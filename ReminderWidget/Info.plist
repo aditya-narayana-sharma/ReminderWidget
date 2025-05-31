@@ -4,6 +4,8 @@
 <dict>
 	<key>NSRemindersUsageDescription</key>
 	<string>This app needs access to your Reminders to display upcoming tasks.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>This app needs access to your Calendar to display and manage events.</string>
 	<key>CFBundleIdentifier</key>
 	<string></string>
 </dict>
